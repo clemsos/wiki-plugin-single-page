@@ -1,12 +1,16 @@
 var express = require('express'),
   exphbs  = require('express-handlebars'),
   request = require("request"),
-  url = require('url');
+  url = require('url'),
+  randomColor = require("randomcolor");
 
 var helpers = require("./helpers")
 
 var port = process.env.PORT || 4000;
 var rootDir = __dirname;
+
+// TODO : extract sitemap
+// http://david.bovill.me/system/sitemap.json
 
 // handlebars config
 var hbs = exphbs.create({
@@ -61,8 +65,15 @@ app.get('/p/', function (req, res) {
    //TODO: pass whole array
    fetchJSON(url, function(data){
     console.log(data);
+
+    var color = randomColor({
+        luminosity: "dark",
+        hue: 'green'
+    });
+
     res.render('parser', {
       title : data.title,
+      color : color,
       url : url,
       story : data.story,
       data : data
