@@ -1,0 +1,13 @@
+<h1>{{ title  }}</h1>
+
+{{#each data.story}}
+  {{ type }}
+  {{#ifCond type '==' 'paragraph'}}
+  dss
+    <p>
+      {{ text }}
+    </p>
+  {{/ifCond }}
+{{/each}}
+{{data}}
+<!-- <img src="//placekitten.com/700/400" alt="" /> -->

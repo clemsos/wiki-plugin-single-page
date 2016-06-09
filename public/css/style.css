@@ -1,3 +1,8 @@
-body {
-  background: #AAA;
+
+#home {
+  margin-top: 7em;
+  text-align: center;
+}
+#home input {
+  width : 100%;
 }
