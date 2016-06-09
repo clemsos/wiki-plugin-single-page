@@ -28,7 +28,6 @@ app.use('/css', express.static(__dirname + '/node_modules/skeleton-css/css/'));
 
 var convertURL = function(completeURL) {
   var parsed = url.parse(completeURL);
-  console.log(parsed);
   // TODO: solid url parsing
   var urls = [];
   parsed.pathname.split("/view").forEach(function(d){
@@ -37,12 +36,8 @@ var convertURL = function(completeURL) {
       urls.push(jsonUrl)
     }
   })
-
   return urls
 }
-
-var testURL = "http://david.bovill.me/view/welcome-visitors/view/ushahidi";
-console.log(convertURL(testURL));
 
 function fetchJSON(url, callback) {
   console.log("fetching %s", url);
@@ -51,8 +46,6 @@ function fetchJSON(url, callback) {
     callback (JSON.parse(body))
   });
 }
-
-
 
 app.get('/', function (req, res) {
   res.render('home')
@@ -64,11 +57,13 @@ app.get('/p/', function (req, res) {
    // TODO validate URI
 
    var urls = convertURL(url);
-
+   var url = urls[urls.length-1];
    //TODO: pass whole array
-   fetchJSON(urls[urls.length-1], function(data){
+   fetchJSON(url, function(data){
+    console.log(data);
     res.render('parser', {
       title : data.title,
+      url : url,
       story : data.story,
       data : data
     });

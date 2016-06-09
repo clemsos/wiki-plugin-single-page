@@ -1,8 +1,30 @@
-
+a {
+  text-decoration: none;
+}
 #home {
   margin-top: 7em;
   text-align: center;
 }
+
 #home input {
   width : 100%;
+}
+
+#parser footer {
+  background-color: black;
+  color:white;
+  padding: 1em 0;
+  text-align: right;
+}
+
+#parser header {
+  width: 100%;
+  padding: 4em 0;
+  background-color: black;
+  text-align: center;
+  margin-bottom: 3em;
+}
+
+#parser h1 {
+  color:white
 }

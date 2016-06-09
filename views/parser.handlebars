@@ -1,13 +1,29 @@
-<h1>{{ title  }}</h1>
+<div id="parser">
+  <header class=" row">
+    <h1>{{ title  }}</h1>
+  </header>
 
-{{#each data.story}}
-  {{ type }}
-  {{#ifCond type '==' 'paragraph'}}
-  dss
-    <p>
-      {{ text }}
-    </p>
-  {{/ifCond }}
-{{/each}}
-{{data}}
-<!-- <img src="//placekitten.com/700/400" alt="" /> -->
+  <div class="container">
+    {{#each data.story}}
+      <div id="{{id}}" class="row">
+        {{#ifCond type '==' 'paragraph'}}
+          <p>
+            {{ text }}
+          </p>
+        {{/ifCond }}
+        {{#ifCond type '==' 'html'}}
+            {{{ text }}}
+        {{/ifCond }}
+      </div>
+    {{/each}}
+  </div>
+
+  <footer class="row">
+    <div class="container">
+      <p>
+        from <a href="{{url}}">{{url}}</a>
+      </p>
+    </div>
+
+  </footer>
+</div>
